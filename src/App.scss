@@ -1,31 +1,55 @@
-@charset "UTF-8";
+@use "sass:map";
+
+// Colores principales
+$color-fondo: #FFFFFF;
+$color-fondo-oscuro: #EFE6DD;
+$color-primario: #f7f3ef;
+$color-secundario: #9d6f4d;
+$color-texto1: #211510;
+$color-texto2: #EFE6DD;
+
+// Botones: Función para invertir el color
+@mixin hover-invert($btn, $btn-hover) {
+  #{$btn}:hover {
+    border: map.get($btn-hover, border);
+    background-color: map.get($btn-hover, background);
+    color: map.get($btn-hover, color);
+  }
+}
+
+// Mapas de estilos
+$btn-1-styles: (
+  border: 2px solid $color-secundario,
+  background: $color-primario,
+  color: $color-texto1
+);
+
+$btn-outline-1-styles: (
+  border: 2px solid $color-secundario,
+  background: $color-secundario,
+  color: $color-fondo
+);
+
+// Botones base
 .btn-1 {
-  border: 2px solid #9d6f4d;
-  background-color: #f7f3ef;
-  color: #211510;
+  border: map.get($btn-1-styles, border);
+  background-color: map.get($btn-1-styles, background);
+  color: map.get($btn-1-styles, color);
 }
 
 .btn-outline-1 {
-  border: 2px solid #9d6f4d;
-  background-color: #9d6f4d;
-  color: #FFFFFF;
+  border: map.get($btn-outline-1-styles, border);
+  background-color: map.get($btn-outline-1-styles, background);
+  color: map.get($btn-outline-1-styles, color);
 }
 
-.btn-1:hover {
-  border: 2px solid #9d6f4d;
-  background-color: #9d6f4d;
-  color: #FFFFFF;
-}
-
-.btn-outline-1:hover {
-  border: 2px solid #9d6f4d;
-  background-color: #f7f3ef;
-  color: #211510;
-}
+// Aplicamos hover invertido
+@include hover-invert('.btn-1', $btn-outline-1-styles);
+@include hover-invert('.btn-outline-1', $btn-1-styles);
 
 /* Iconos */
 i {
-  color: #211510;
+  color: $color-texto1;
 }
 
 .icon {
@@ -34,10 +58,10 @@ i {
 }
 
 /* Campos del formulario */
-input[type=text],
-input[type=email],
+input[type='text'],
+input[type='email'],
 .form-control {
-  border: 2px solid #9d6f4d;
+  border: 2px solid $color-secundario;
 }
 
 * {
@@ -52,26 +76,27 @@ input[type=email],
   display: grid;
   grid-template-rows: 100px auto 50px;
   grid-template-columns: 2fr 5fr;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-  color: #211510;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: $color-texto1;
 }
 
 /* HEADER */
 .App-header {
   grid-row: 1;
   grid-column: 1/-1;
-  border-bottom: 2px solid #9d6f4d;
+  border-bottom: 2px solid $color-secundario;
   z-index: 1001;
-  background-color: #FFFFFF;
+  background-color: $color-fondo;
 }
 
 .header-container {
   align-content: center;
   height: 100%;
   text-align: center;
-}
-.header-container h1 {
-  font-weight: bold;
+
+  h1 {
+    font-weight: bold;
+  }
 }
 
 /* ASIDE */
@@ -79,8 +104,8 @@ input[type=email],
   grid-row: 2;
   grid-column: 1;
   align-content: center;
-  background-color: #EFE6DD;
-  border-right: 2px solid #9d6f4d;
+  background-color: $color-fondo-oscuro;
+  border-right: 2px solid $color-secundario;
   transition: transform 0.3s ease;
   height: 100%;
   z-index: 1000;
@@ -97,6 +122,7 @@ input[type=email],
     justify-content: center;
   }
 }
+
 /* Estilo de cada item */
 .nav-item {
   width: 60%;
@@ -105,17 +131,18 @@ input[type=email],
 }
 
 .App-link {
-  color: #211510;
+  color: $color-texto1;
   text-decoration: none;
   font-weight: bold;
   padding: 0 10px;
-}
-.App-link:hover {
-  font-size: large;
-  color: #211510;
-  border: 2px solid #9d6f4d;
-  background-color: #FFFFFF;
-  border-radius: 5px;
+
+  &:hover {
+    font-size: large;
+    color: $color-texto1;
+    border: 2px solid $color-secundario;
+    background-color: $color-fondo;
+    border-radius: 5px;
+  }
 }
 
 /* Botón hamburguesa */
@@ -138,11 +165,13 @@ input[type=email],
     grid-template-rows: 100px auto minmax(50px, 100px);
     grid-template-columns: 0px auto;
   }
+
   /* Botón hamburguesa visible */
   .menu-toggle {
     display: block;
     margin-left: 10px;
   }
+
   /* Aside fuera de pantalla */
   /* Aside fuera de pantalla en móvil */
   .App-aside {
@@ -154,14 +183,16 @@ input[type=email],
     /* ocupa toda la pantalla */
     width: 250px;
     transform: translateX(-100%);
-    border-right: 2px solid #9d6f4d;
+    border-right: 2px solid $color-secundario;
     z-index: 1000;
     padding: 0;
   }
+
   /* Cuando se abre */
   .App-aside.open {
     transform: translateX(0);
   }
+
   /* Navbar dentro del aside */
   .navbar-container {
     display: flex;
@@ -171,12 +202,14 @@ input[type=email],
     justify-content: flex-start;
     padding-top: 20px;
   }
+
   /* Main ajustado al grid único */
   .App-main {
     grid-row: 2;
     position: relative;
     z-index: 0;
   }
+
   /* Footer ajustado al grid único */
   .App-footer {
     grid-column: 1;
@@ -184,6 +217,7 @@ input[type=email],
     z-index: 1001;
   }
 }
+
 /* MAIN */
 .App-main {
   grid-row: 2;
@@ -198,10 +232,8 @@ input[type=email],
 
 /* FOOTER */
 .App-footer {
-  border-top: 2px solid #9d6f4d;
+  border-top: 2px solid $color-secundario;
   grid-row: 3;
   grid-column: 1/-1;
-  background-color: #FFFFFF;
+  background-color: $color-fondo;
 }
-
-/*# sourceMappingURL=App.css.map */

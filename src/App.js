@@ -6,7 +6,7 @@ import { HeaderComp } from './components/HeaderComp';
 import { NavComp } from './components/NavComp';
 
 // Importando React Router
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Importando las vistas
 import { SobreMi } from './views/SobreMi';
@@ -21,11 +21,7 @@ function App() {
         <header className="App-header px-5">
           <HeaderComp />
         </header>
-        <aside className="App-aside">
-          <nav className="App-nav">
-            <NavComp />
-          </nav>
-        </aside>
+        <NavComp />
         <main className="App-main">
           <Routes>
             <Route path="/" element={<SobreMi />} />
