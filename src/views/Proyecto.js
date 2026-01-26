@@ -49,7 +49,7 @@ export const Proyecto = () => {
                                 Ver código en GitHub
                             </a>
                             <a
-                                href={`${process.env.PUBLIC_URL}/Documentación - PI.pdf`}
+                                href={`${process.env.PUBLIC_URL}/documentacion-pi.pdf`}
                                 download="Documentacion_Proyecto_Ecommerce.pdf"
                                 className="btn btn-outline-1 mb-2"
                                 title="Descargar documentación del proyecto"
