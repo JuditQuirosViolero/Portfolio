@@ -48,7 +48,7 @@ export const SobreMi = () => (
 
     <div className="d-flex flex-wrap justify-content-start gap-3">
 
-      <a href="/Currículum_Judit_Quirós_Violero.pdf" download="Currículum_Judit_Quirós_Violero.pdf"
+      <a href={`${process.env.PUBLIC_URL}/Currículum_Judit_Quirós_Violero.pdf`} download="Currículum_Judit_Quirós_Violero.pdf"
         className="btn d-flex align-items-center btn-outline-1" title="Descarga mi currículm"
         aria-label="Descarga mi currículm"
         whileHover={{ scale: 1.05 }}>
