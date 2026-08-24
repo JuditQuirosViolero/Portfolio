@@ -17,8 +17,8 @@ export const Contacto = () => {
 
      // URL dinámica automática para Front y Back
     const URL_API = window.location.hostname === "localhost" 
-      ? "http://localhost:3001/contacto" // En local apunta al puerto 3001 de tu Node.js
-      : "https://onrender.com"; // En internet apuntará a tu servidor de Render
+      ? "http://localhost:3001/contacto" // En local apunta al puerto 3001 de Node.js
+      : "https://portfolio-backend-mtpc.onrender.com"; // En internet apunta al servidor de Render
 
 
     try {
