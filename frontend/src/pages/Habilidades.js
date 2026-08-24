@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export const Habilidades = () => {
     return (
         <div className='container px-5 pt-5 pb-3'>
-            <h2 className="display-6 mb-5 text-center">Mis Habilidades</h2>
+            <h2 className="display-6 mb-4 text-center">Mis Habilidades</h2>
 
             {/* COMPETENCIAS TÉCNICAS */}
             <div className="mb-5">

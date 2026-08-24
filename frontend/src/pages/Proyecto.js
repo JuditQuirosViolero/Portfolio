@@ -5,11 +5,11 @@ import { TarjetasProyectos } from "../components/TarjetasProyectos";
 export const Proyecto = () => {
   return (
     <div className="container px-5 pt-5 pb-3">
-      <h2 className="display-6 mb-5 text-center">Mis Proyectos</h2>
+      <h2 className="display-6 mb-4 text-center">Mis Proyectos</h2>
 
       <div className="row justify-content-start">
         {/* Proyecto Ecommerce */}
-        <div className="col-12 col-lg-6 col-xxl-4 mb-4">
+        <div className="col-12 col-lg-6 col-xxl-4 mb-2">
           <TarjetasProyectos
             title="Ecommerce Laravel (TFG)"
             description="Aplicación web desarrollada como Trabajo de Fin de Grado con

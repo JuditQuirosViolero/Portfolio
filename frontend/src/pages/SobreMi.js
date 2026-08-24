@@ -22,7 +22,7 @@ export const SobreMi = () => {
           <motion.img
             src={profilePic}
             alt="Fotografía de Judit, desarrolladora web"
-            className="img-fluid rounded-circle shadow"
+            className="img-fluid rounded-circle shadow w-75 mx-auto"
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}

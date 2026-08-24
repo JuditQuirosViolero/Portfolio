@@ -49,7 +49,7 @@ export const Contacto = () => {
 
   return (
     <div className="container h-100 px-5 pt-5 pb-3">
-      <h2 className=" display-6 mb-5 text-center">Contacto</h2>
+      <h2 className=" display-6 mb-4 text-center">Contacto</h2>
 
       <div className="row g-4">
         {/* Formulario */}

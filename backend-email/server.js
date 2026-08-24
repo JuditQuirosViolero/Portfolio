@@ -7,19 +7,11 @@ dotenv.config();
 
 const app = express();
 
-// Candado CORS restrictivo
-app.use(cors({
-  origin: [
-    "https://juditquirosviolero.github.io", 
-    "http://localhost:3000"  
-  ] 
-}));
-
 // Candado CORS actualizado para permitir desarrollo local y producción externa
 app.use(cors({
   origin: [
-    "https://juditquirosviolero.github.io", // Tu frontend subido a GitHub Pages
-    "http://localhost:3000"                  // Tu frontend de React en local (puerto 3000)
+    "http://localhost:3000",                
+    "https://judit-quiros-portfolio.onrender.com"                 
   ]
 }));
 
@@ -64,7 +56,7 @@ app.post("/contacto", async (req, res) => {
   }
 });
 
-// Puerto dinámico listo para internet (Render / Railway)
+// Puerto dinámico listo para internet (Render)
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Servidor funcionando en el puerto ${PORT}`);
