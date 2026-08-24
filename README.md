@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# 💼 Portfolio Personal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este es mi portfolio web con formulario de contacto funcional usando un backend propio.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Estructura del proyecto
 
-### `npm start`
+```text
+portfolio/
+│
+├── frontend/ → React
+│ ├── src/
+│ ├── public/
+│ └── package.json
+│
+├── backend-email/ → Node + Express + Resend
+│ ├── server.js
+│ ├── package.json
+│ └── .env (Ignorado en Git)
+│
+├── package.json             → Configuración raíz (Orquestador)
+├── .gitignore
+└── README.md
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Instalación
 
-### `npm test`
+Se puede levantar ambos entornos por separado o usar el comando unificado desde la raíz.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Arranque unificado (Recomendado)
+Desde la carpeta raíz del proyecto (`portfolio/`), instala las dependencias de la raíz y arranca Front y Back a la vez:
+```bash
+npm install
+npm run dev
+```
 
-### `npm run build`
+### Ejecución manual por separado
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Frontend (React)
+```bash
+cd frontend
+npm install
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Backend (Node + Express)
+```bash
+cd backend-email
+npm install
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### Variables de entorno
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Para que el backend funcione en local, debes crear un archivo llamado `.env` basado en `.env.example` **dentro de la carpeta `backend-email/`** con tu credencial de Resend:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```env
+RESEND_API_KEY=tu_clave_secreta_de_resend
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Funcionalidad
 
-## Learn More
+El formulario de contacto procesa y envía mensajes en tiempo real de forma segura:
+1. **Frontend:** El usuario rellena el formulario en React.
+2. **Validación y Limpieza:** El frontend envía los datos mediante un `fetch` dinámico al backend, donde se validan y se limpian contra ataques de Inyección de Código (XSS).
+3. **Envío:** El backend procesa la petición y utiliza la API de **Resend** para disparar el correo.
+4. **Recepción:** El mensaje llega directamente a la bandeja de correo configurada.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Tecnologías utilizadas
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Frontend:** React, Framer Motion, Bootstrap, SCSS (Sass).
+- **Backend:** Node.js, Express, Cors, Dotenv.
+- **Servicios:** Resend API.

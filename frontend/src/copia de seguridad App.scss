@@ -1,0 +1,240 @@
+@use "sass:map";
+
+// Colores principales
+$color-fondo: #FFFFFF;
+$color-fondo-oscuro: #EFE6DD;
+$color-primario: #f7f3ef;
+$color-secundario: #9d6f4d;
+$color-texto1: #211510;
+$color-texto2: #EFE6DD;
+
+// Botones: Función para invertir el color
+@mixin hover-invert($btn, $btn-hover) {
+  #{$btn}:hover {
+    border: map.get($btn-hover, border);
+    background-color: map.get($btn-hover, background);
+    color: map.get($btn-hover, color);
+  }
+}
+
+// Mapas de estilos
+$btn-1-styles: (
+  border: 2px solid $color-secundario,
+  background: $color-primario,
+  color: $color-texto1
+);
+
+$btn-outline-1-styles: (
+  border: 2px solid $color-secundario,
+  background: $color-secundario,
+  color: $color-fondo
+);
+
+// Botones base
+.btn-1 {
+  border: map.get($btn-1-styles, border);
+  background-color: map.get($btn-1-styles, background);
+  color: map.get($btn-1-styles, color);
+}
+
+.btn-outline-1 {
+  border: map.get($btn-outline-1-styles, border);
+  background-color: map.get($btn-outline-1-styles, background);
+  color: map.get($btn-outline-1-styles, color);
+}
+
+// Aplicamos hover invertido
+@include hover-invert('.btn-1', $btn-outline-1-styles);
+@include hover-invert('.btn-outline-1', $btn-1-styles);
+
+// ---------------------------------------------------------- \\
+
+/* Iconos */
+i {
+  color: $color-texto1;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Campos del formulario */
+input[type='text'],
+input[type='email'],
+.form-control {
+  border: 2px solid $color-secundario;
+}
+
+/* ----------|Maquetación Principal|-------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* APP: Todo el contenido */
+.App {
+  min-height: 100dvb;
+  display: grid;
+  grid-template-rows: 100px auto 50px;
+  grid-template-columns: 2fr 5fr;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: $color-texto1;
+}
+
+/* HEADER */
+.App-header {
+  grid-row: 1;
+  grid-column: 1/-1;
+  border-bottom: 2px solid $color-secundario;
+  z-index: 1001;
+  background-color: $color-fondo;
+}
+
+.header-container {
+  align-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+/* NAV - ASIDE */
+.App-aside {
+  grid-row: 2;
+  grid-column: 1;
+  background-color: $color-fondo-oscuro;
+  border-right: 2px solid $color-secundario;
+  transition: transform 0.3s ease;
+  height: 100%;
+  z-index: 1000;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.nav-item {
+  width: 60%;
+  overflow-wrap: break-word;
+  font-size: x-large;
+}
+
+.App-link {
+  color: $color-texto1;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  padding: 0 10px;
+
+  &:hover {
+    font-size: large;
+    color: $color-texto1;
+    border: 2px solid $color-secundario;
+    background-color: $color-fondo;
+    border-radius: 5px;
+  }
+}
+
+/* MAIN */
+.App-main {
+  grid-row: 2;
+  grid-column: 2;
+  width: 100%;
+}
+
+/* FOOTER */
+.App-footer {
+  border-top: 2px solid $color-secundario;
+  grid-row: 3;
+  grid-column: 1/-1;
+  background-color: $color-fondo;
+}
+
+/* -------------- | MODO ESCRITORIO - Nav | ----------- */
+@media (min-width: 769px) {
+  .App-aside {
+    display: flex;
+    justify-content: flex-start; // arriba
+    align-items: start; // centrado horizontalmente
+    padding-top: 300px;
+  }
+
+  .navbar-container {
+    position: sticky;
+    top: 200px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* -------------- | MODO MÓVIL | ----------- */
+@media (max-width: 768px) {
+  .App {
+    font-size: 14px;
+    display: grid;
+    grid-template-rows: 100px auto minmax(50px, 100px);
+    grid-template-columns: 0px auto;
+  }
+
+  /* Botón hamburguesa */
+  .menu-toggle {
+    display: block;
+    position: sticky !important;
+    top: 120px;
+    left: 50px;
+    z-index: 1001;
+    font-size: xx-large;
+    margin: 20px;
+  }
+
+  /* Aside */
+  .App-aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+
+    background-color: $color-fondo-oscuro;
+    border-right: 2px solid $color-secundario;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  /* Cuando se abre */
+  .App-aside.open {
+    transform: translateX(0);
+  }
+
+  /* Navbar dentro del aside */
+  .navbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+
+    margin-top: 300px;
+  }
+
+  /* Main */
+  .App-main {
+    grid-row: 2;
+    position: relative;
+    z-index: 0;
+  }
+
+  /* Footer */
+  .App-footer {
+    grid-column: span 2;
+    grid-row: 3;
+    z-index: 1001;
+  }
+}

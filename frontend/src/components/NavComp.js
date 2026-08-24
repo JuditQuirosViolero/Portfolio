@@ -7,7 +7,7 @@ export const NavComp = () => {
 
   const navItems = [
     { name: 'Sobre mí', path: '/' },
-    { name: 'Proyecto', path: '/proyecto' },
+    { name: 'Proyectos', path: '/proyecto' },
     { name: 'Habilidades', path: '/habilidades' },
     { name: 'Contacto', path: '/contacto' },
   ];
@@ -23,7 +23,7 @@ export const NavComp = () => {
       <aside className={`App-aside ${menuOpen ? 'open' : ''}`}>
         <nav className="navbar-container nav nav-underline">
           {navItems.map((item, index) => (
-            <div key={index} className="nav-item">
+            <div key={index} className="nav-item fs-xlarge">
               <Link
                 to={item.path}
                 className={`App-link nav-link ${location.pathname === item.path ? 'active fs-4' : ''}`}

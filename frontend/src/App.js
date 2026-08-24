@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 
 // Importando los componentes
 import { FooterComp } from './components/FooterComp';
@@ -9,10 +9,12 @@ import { NavComp } from './components/NavComp';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Importando las vistas
-import { SobreMi } from './views/SobreMi';
-import { Proyecto } from './views/Proyecto';
-import { Habilidades } from './views/Habilidades';
-import { Contacto } from './views/Contacto';
+import { SobreMi } from './pages/SobreMi';
+import { Proyecto } from './pages/Proyecto';
+import { Habilidades } from './pages/Habilidades';
+import { Contacto } from './pages/Contacto';
+import { ProyectoEcommerce } from './pages/ProyectoEcommerce';
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SobreMi />} />
             <Route path="/proyecto" element={<Proyecto />} />
+            <Route path="/proyecto/ProyectoEcommerce" element={<ProyectoEcommerce />} />
             <Route path="/habilidades" element={<Habilidades />} />
             <Route path="/contacto" element={<Contacto />} />
           </Routes>
