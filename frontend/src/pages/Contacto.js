@@ -15,10 +15,10 @@ export const Contacto = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-     // URL dinámica automática para Front y Back
+    // URL dinámica automática para Front y Back
     const URL_API = window.location.hostname === "localhost" 
       ? "http://localhost:3001/contacto" // En local apunta al puerto 3001 de Node.js
-      : "https://portfolio-backend-mtpc.onrender.com"; // En internet apunta al servidor de Render
+      : "https://portfolio-backend-mtpc.onrender.com/contacto"; // En internet apunta al servidor de Render
 
 
     try {
